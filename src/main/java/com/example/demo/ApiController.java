@@ -19,7 +19,7 @@ public class ApiController {
 
     private List<String> messages = new ArrayList<>();
 
-    // d) Выводит список сообщений Выводит сообщение по индексу
+    // d) Выводит список сообщений
     /* curl -X GET http://localhost:8080/messages -H 'Content-Type: text/plain' */
     @GetMapping("messages")
     public List<String> getMessages() {
