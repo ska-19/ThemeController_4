@@ -17,88 +17,97 @@ import java.util.List;
 @RestController
 public class ApiController {
 
-    private List<String> messages = new ArrayList<>();
+    private List<String> themes = new ArrayList<>();
 
-    // d) Выводит список сообщений
-    /* curl -X GET http://localhost:8080/messages -H 'Content-Type: text/plain' */
-    @GetMapping("messages")
-    public List<String> getMessages() {
-        return messages;
+    // 3) Выводит список тем
+    /* curl -X GET http://localhost:8080/themes -H 'Content-Type: text/plain' */
+    @GetMapping("themes")
+    public List<String> getThemes() {
+        return themes;
     }
 
-    // a) Добавляет сообщение в список
-    /* curl -X POST http://localhost:8080/messages -H 'Content-Type: text/plain' -d 'aaaaa' */
-    @PostMapping("messages")
-    public void addMessage(@RequestBody String text) {
-        messages.add(text);
+    // 1) Добавляет тему в список
+    /* curl -X POST http://localhost:8080/themes -H 'Content-Type: text/plain' -d 'aaaaa' */
+    @PostMapping("themes")
+    public void addThemes(@RequestBody String text) {
+        themes.add(text);
     }
 
-    // c) Выводит сообщение по индексу
-    /* curl -X GET http://localhost:8080/messages/1 -H 'Content-Type: text/plain' */
-    @GetMapping("messages/{index}")
-    public String getMessage(@PathVariable("index") Integer index) {
-        return messages.get(index);
+    // 2) Удаляет тему по индексу
+    /* curl -X DELETE http://localhost:8080/themes/0 -H 'Content-Type: text/plain' */
+    @DeleteMapping("themes/{index}")
+    public void deleteThemes(@PathVariable("index") Integer index) {
+        themes.remove((int) index);
     }
 
-    // b) Удаляет сообщение по индексу
-    /* curl -X DELETE http://localhost:8080/messages/0 -H 'Content-Type: text/plain' */
-    @DeleteMapping("messages/{index}")
-    public void deleteText(@PathVariable("index") Integer index) {
-        messages.remove((int) index);
-    }
-
-    // e) Обновляет сообщение по индексу
-    /* curl -X PUT http://localhost:8080/messages/1 -H 'Content-Type: text/plain' -d 'ttttttt' */
-    @PutMapping("messages/{index}")
-    public void updateMessage(
+    // 4) Обновляет тему по индексу
+    /* curl -X PUT http://localhost:8080/themes/1 -H 'Content-Type: text/plain' -d 'ttttttt' */
+    @PutMapping("themes/{index}")
+    public void updateThemes(
             @PathVariable("index") Integer i,
             @RequestBody String message) {
-        messages.remove((int) i);
-        messages.add(i, message);
+        themes.remove((int) i);
+        themes.add(i, message);
     }
 
-    // ДАЛЬШЕ ДЗ НА 4
-
-    // 1. возвращает индекс первого текста с подстрокой text
-    /* curl -X GET http://localhost:8080/messages/search/tt -H 'Content-Type: text/plain' */
-    @GetMapping("messages/search/{text}")
-    public Integer getIndexSearch(@PathVariable("text") String text) {
-        for (int i = 0; i < messages.size(); i++) {
-            String E = messages.get(i);
-            if(E.contains(text)){
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    // 2. возвращает количество сообщений
-    /* curl -X GET http://localhost:8080/messages/count -H 'Content-Type: text/plain' */
-    @GetMapping("messages/count")
+    // 5) возвращает количество тем
+    /* curl -X GET http://localhost:8080/themes/count -H 'Content-Type: text/plain' */
+    @GetMapping("themes/count")
     public Integer getCount() {
-        return messages.size();
+        return themes.size();
     }
 
-    // 3. Добавляет сообщение с порядковым номером index
-    /* curl -X POST http://localhost:8080/messages/1/create -H 'Content-Type: text/plain' -d 'ffffff' */
-    @PostMapping("messages/{index}/create")
-    public void addMessageToIndex(
-            @PathVariable("index") Integer index,
-            @RequestBody String text) {
-        messages.add(index, text);
-    }
-
-    // 4. Удаляет все сообщения в которых есть подстрока text
-    /* curl -X DELETE http://localhost:8080/messages/search/aaa -H 'Content-Type: text/plain' */
-    @DeleteMapping("messages/search/{text}")
-    public void deleteTextSearchText(@PathVariable("text") String text) {
-        for (int i = 0; i < messages.size(); i++) {
-            String E = messages.get(i);
-            if(E.contains(text)){
-                messages.remove(i);
-            }
+    //6) Удаляет все темы
+    /* curl -X DELETE http://localhost:8080/themes/delete -H 'Content-Type: text/plain' */
+    @DeleteMapping("themes/delete")
+    public void deleteTextSearchText() {
+        for (int i = 0; i < themes.size(); i++) {
+            themes.remove(i);
         }
+     }
+
+    // 7) Выводит тему по индексу
+    /* curl -X GET http://localhost:8080/themes/1 -H 'Content-Type: text/plain' */
+    @GetMapping("themes/{index}")
+    public String getThemes(@PathVariable("index") Integer index) {
+        return themes.get(index);
     }
+
+
+//    // 1. возвращает индекс первого текста с подстрокой text
+//    /* curl -X GET http://localhost:8080/messages/search/tt -H 'Content-Type: text/plain' */
+//    @GetMapping("messages/search/{text}")
+//    public Integer getIndexSearch(@PathVariable("text") String text) {
+//        for (int i = 0; i < themes.size(); i++) {
+//            String E = themes.get(i);
+//            if(E.contains(text)){
+//                return i;
+//            }
+//        }
+//        return -1;
+//    }
+
+
+//    // 3. Добавляет сообщение с порядковым номером index
+//    /* curl -X POST http://localhost:8080/messages/1/create -H 'Content-Type: text/plain' -d 'ffffff' */
+//    @PostMapping("messages/{index}/create")
+//    public void addMessageToIndex(
+//            @PathVariable("index") Integer index,
+//            @RequestBody String text) {
+//        themes.add(index, text);
+//    }
+
+//    // 4. Удаляет все сообщения в которых есть подстрока text
+//    /* curl -X DELETE http://localhost:8080/messages/search/aaa -H 'Content-Type: text/plain' */
+//    @DeleteMapping("messages/search/{text}")
+//    public void deleteTextSearchText(@PathVariable("text") String text) {
+//        for (int i = 0; i < themes.size(); i++) {
+//            String E = themes.get(i);
+//            if(E.contains(text)){
+//                themes.remove(i);
+//            }
+//        }
+//     }
 
 
 }
