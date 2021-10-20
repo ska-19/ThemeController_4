@@ -72,7 +72,7 @@ public class ThemeController {
     }
 
 
-    //ДАЛЬШЕ НА 4 НО пока НЕ РАБОТАЕТ
+    //ДАЛЬШЕ НА 4 НО пока НЕ РАБОТАЕТ...
 
     // 8) Создать комментарий в определенной теме
     /* curl -X POST http://localhost:8080/themes/0/comment -H 'Content-Type: application/json' -d 'TerrariaGG' */
@@ -81,7 +81,6 @@ public class ThemeController {
             @PathVariable("index") Integer i,
             @RequestBody String message) {
         themes.get(i).setComment(message);
-
     }
     //9) Удаляет комменарий темы
     /* curl -X DELETE http://localhost:8080/themes/0/comment/0 -H 'Content-Type: application/json' */

@@ -9,9 +9,13 @@ public class Theme {
     private String name;
     private List<String> comments = new ArrayList<>();
 
-    public Theme(String name, List<String> comments){
+    public Theme(String name,List<String> comments){
         this.name = name;
         this.comments = comments;
+    }
+    public Theme(String name){
+        this.name = name;
+        this.comments = new ArrayList<>();
     }
 
     public String getName(){return name;}
@@ -22,7 +26,7 @@ public class Theme {
     public void setName(String name){this.name = name;}
     public void setComments(List<String> comments){this.comments = comments;}
     public void setCommentN(String comment, Integer i){this.comments.add(i,comment) ;}
-    public void setComment(String comment){this.comments.add(comment) ;}
+    public void setComment(String comment){ this.comments.add(comment);}
 
     public void deleteComment(Integer i){this.comments.remove(i);}
     public void updComment(Integer i,String comment){
