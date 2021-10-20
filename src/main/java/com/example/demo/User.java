@@ -1,24 +1,30 @@
-package com.example.demo;
-
-
-public class User {
-
-    private String name;
-    private int age;
-
-    public User(String name, int age){
-        this.name = name;
-        this.age = age;
-    }
-
-    public String getName(){return name;}
-    public int getAge(){return age;}
-
-    public void setName(String name){this.name = name;}
-    public void setAge(int age){this.age = age;}
-
-//    @Override
-//    public String toString(){return "(" + getName() + "," + getAge() + ")";}
-
-
-}
+//package com.example.demo;
+//
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//public class Themes {
+//
+//    private String name;
+//    private List<String> comments = new ArrayList<>();
+//
+//    public Themes(String name, List comments){
+//        this.name = name;
+//        this.comments = comments;
+//    }
+//
+//    public String getName(){return name;}
+//    public List<String> getComments(){return comments;}
+//    public String getComment(Integer i){return comments.get(i);}
+//
+//
+//    public void setName(String name){this.name = name;}
+//    public void setComments(List<String> comments){this.comments = comments;}
+//    public void setComment(String comment, Integer i){this.comments.add(i,comment) ;}
+//
+////    @Override
+////    public String toString(){return "(" + getName() + "," + getAge() + ")";}
+//
+//
+//}
