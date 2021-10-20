@@ -91,7 +91,7 @@ public class ThemeController {
     //9) Обновляет комменарий темы
     /* curl -X PUT http://localhost:8080/themes/0/comment/0 -H 'Content-Type: application/json' -d 'ttttttt'*/
     @PutMapping("themes/{index}/comment/{index2}")
-    public void updComment(
+    public void updTComment(
             @PathVariable("index") Integer i1,
             @PathVariable("index2") Integer i2,
             @RequestBody String message
